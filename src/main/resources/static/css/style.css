@@ -1,5 +1,53 @@
-body {
-  background: red;
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 280px));
+  grid-column-gap: 18px;
+  grid-row-gap: 20px;
+  justify-content: center;
+}
+
+.fill_in-order {
+  display: flex;
+  justify-content: space-between;
+}
+.fill_in-order .taco_creation {
+  display: flex;
+  align-items: center;
+}
+.fill_in-order .taco_creation input {
+  margin-left: 20px;
+}
+.fill_in-order button {
+  height: 40px;
+  background: aquamarine;
+  border: none;
+  color: #000;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.delivery_field {
+  padding: 10px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  max-width: 100px;
+  height: auto;
+}
+
+.grid_items-2 {
+  grid-template-columns: 50% 50%;
+  justify-content: space-around;
+  grid-column-gap: 18px;
+  grid-row-gap: 20px;
+}
+
+.validationError {
+  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */
