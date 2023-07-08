@@ -1,6 +1,7 @@
 package ru.taco.tacos.controller;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.taco.tacos.model.Ingredient;
 import ru.taco.tacos.model.Taco;
 import ru.taco.tacos.model.TacoOrder;
+import ru.taco.tacos.service.IngredientService;
 
 import java.util.List;
 
@@ -16,21 +18,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("tacoOrder")
+@AllArgsConstructor
 public class DesignTacoController {
+    private IngredientService ingredientService;
+
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = List.of(
-                new Ingredient("FLTO", "Flour Tortilla", Ingredient.Type.WRAP),
-                new Ingredient("COTO", "Corn Tortilla", Ingredient.Type.WRAP),
-                new Ingredient("GRBF", "Ground Beef", Ingredient.Type.PROTEIN),
-                new Ingredient("CARN", "Carnitas", Ingredient.Type.PROTEIN),
-                new Ingredient("TMTO", "Diced Tomatoes", Ingredient.Type.VEGGIES),
-                new Ingredient("LETC", "Lettuce", Ingredient.Type.VEGGIES),
-                new Ingredient("CHED", "Cheddar", Ingredient.Type.CHEESE),
-                new Ingredient("JACK", "Monterrey Jack", Ingredient.Type.CHEESE),
-                new Ingredient("SLSA", "Salsa", Ingredient.Type.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", Ingredient.Type.SAUCE)
-        );
+        List<Ingredient> ingredients = ingredientService.findAll();
         Ingredient.Type[] types = Ingredient.Type.values();
         for (var type : types) {
             model.addAttribute(type.toString().toLowerCase(),
