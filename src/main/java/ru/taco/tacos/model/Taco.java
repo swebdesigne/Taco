@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class Taco {
-    private Long id;
+    private int id;
     private Date createAt = new Date();
     @NonNull
     @Size(min = 5, message = "Name must be at least 5 characters long")

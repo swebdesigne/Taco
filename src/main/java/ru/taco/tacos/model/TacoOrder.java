@@ -3,6 +3,7 @@ package ru.taco.tacos.model;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Data
 public class TacoOrder implements Serializable {
     private static final long SERIAL_VERSION_UID = 1L;
-    private Long id;
+    private int id;
     private Date placeAt = new Date();
     @NotBlank(message = "Delivery name is required")
     private String deliveryName;
@@ -23,6 +24,7 @@ public class TacoOrder implements Serializable {
     @NotBlank(message = "City is required")
     private String deliveryCity;
     @NotBlank(message = "State is required")
+    @Size(max = 2, message = "State should not be more 2 characters")
     private String deliveryState;
     @NotBlank(message = "Zip code is required")
     private String deliveryZip;

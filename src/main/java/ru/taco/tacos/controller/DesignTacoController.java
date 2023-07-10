@@ -43,7 +43,8 @@ public class DesignTacoController {
     }
 
     @GetMapping
-    public String showDesignForm() {
+    public String showDesignForm(Taco taco) {
+        System.out.println(taco);
         return "design";
     }
 
