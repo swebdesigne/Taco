@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class JdbcIngredientRepository implements IngredientRepository {
+public class IngredientJdbcTemplate implements IngredientRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
