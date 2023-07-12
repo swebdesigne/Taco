@@ -24,7 +24,7 @@ public class TacoOrder implements Serializable {
     @NotBlank(message = "City is required")
     private String deliveryCity;
     @NotBlank(message = "State is required")
-    @Size(max = 2, message = "State should not be more 2 characters")
+    @Size(max = 20, message = "State should not be more 20 characters")
     private String deliveryState;
     @NotBlank(message = "Zip code is required")
     private String deliveryZip;
