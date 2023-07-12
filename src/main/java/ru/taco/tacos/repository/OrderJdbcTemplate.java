@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
 @Slf4j
 @Repository
 @AllArgsConstructor
-public class JdbcOrderRepository implements OrderRepository {
+public class OrderJdbcTemplate implements OrderRepository {
     private final JdbcTemplate jdbc;
 
     private final static String SAVE_TACO_ORDER = "insert into Taco_Order "
