@@ -53,19 +53,16 @@ public class SecurityConfig {
                         .requestMatchers("/", "/**", "/login", "/register").permitAll()
                         .anyRequest().authenticated()
                 ).formLogin(form -> form
-                                .loginPage("/login")
-//                        .loginProcessingUrl("/authenticate")
-//                                .usernameParameter("username") .passwordParameter("password")
-                                .defaultSuccessUrl("/", true)
-                                .failureUrl("/login/error")
-                                .permitAll()
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/login/error")
+                        .permitAll()
+                ).logout((logout) -> logout
+                        .logoutUrl("/logout")
+                        .invalidateHttpSession(true)
+                        .logoutSuccessUrl("/")
+                        .permitAll()
                 );
-//                .formLogin(withDefaults());
         return http.build();
-
-//        .and() .formLogin()
-//                .loginPage("/login") .loginProcessingUrl("/authenticate") .usernameParameter("user") .passwordParameter("pwd")
-//        .and() .formLogin()
-//                .loginPage("/login") .defaultSuccessUrl("/design")
     }
 }
