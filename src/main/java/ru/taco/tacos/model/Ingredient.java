@@ -1,16 +1,31 @@
 package ru.taco.tacos.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Ingredient {
-    private final int id;
-    private final String code;
-    private final String name;
-    private final Type type;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String code;
+    private String name;
+    //    @Enumerated(EnumType.STRING)
+    private Type type;
 
+    public Ingredient(int id, String code, String name, Type type) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.type = type;
+    }
+    public Ingredient(String code) {
+        this.code = code;
+    }
     public enum Type {
         WRAP,
         PROTEIN,

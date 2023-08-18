@@ -12,10 +12,9 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class IngredientJdbcTemplate implements IngredientRepository {
+public class IngredientJdbcTemplate  {
     private JdbcTemplate jdbcTemplate;
 
-    @Override
     public List<Ingredient> findAll() {
         return jdbcTemplate.query(
                 "select id, code, name, type from Ingredient",
@@ -32,15 +31,13 @@ public class IngredientJdbcTemplate implements IngredientRepository {
         );
     }
 
-    @Override
-    public Optional<Ingredient> findById(String id) {
+    public Optional<Ingredient> findById(Integer id) {
         var result = jdbcTemplate.query(
                 "select id, name, type from Ingredient where id = ?",
                 this::mapRowToIngredient, id);
         return Optional.of(result.get(0));
     }
 
-    @Override
     public Ingredient save(Ingredient ingredient) {
         jdbcTemplate.update(
                 "insert into Ingredient (code, name, type) values (?, ?, ?)",
