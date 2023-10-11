@@ -2,6 +2,7 @@ package ru.taco.tacos.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import ru.taco.tacos.model.TacoOrder;
+import ru.taco.tacos.model.User;
 import ru.taco.tacos.service.TacoOrderServiceImp;
 
 import javax.validation.Valid;
@@ -28,8 +30,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public String processOrder(@Valid TacoOrder tacoOrder, Errors errors, SessionStatus sessionStatus) {
-        System.out.println(tacoOrder);
+    public String processOrder(@Valid TacoOrder tacoOrder, Errors errors, SessionStatus sessionStatus, @AuthenticationPrincipal User user) {
         if (errors.hasErrors()) {
             return "orders/orderForm";
         }

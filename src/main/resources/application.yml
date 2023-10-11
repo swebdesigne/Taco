@@ -1,0 +1,31 @@
+logging:
+  level:
+    root: INFO
+    com.dmdev.spring.database.pool: INFO
+  file:
+    name: log.log
+    path: /
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 945611240239-3624ijs7pmnttt9lqj0s1pkumlg65p38.apps.googleusercontent.com
+            clientSecret: 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
+            redirectUri: http://localhost:8080/login/oauth2/code/google
+            scope: openid,email,profile
+#  datasource:
+#    url: jdbc:postgresql://127.0.0.1:5432/tacocloud
+#    username: postgres
+#    password: password
+#    driver-class-name: org.postgresql.Driver
+#    oracleucp:
+#      max-pool-size: 12
+#      timeout-check-interval: 10
+  jpa:
+    properties.hibernate:
+      show_sql: true
+      format_sql: true
+      hbm2ddl.auto: validate

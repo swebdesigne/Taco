@@ -3,17 +3,19 @@ package ru.taco.tacos.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.taco.tacos.model.Ingredient;
-import ru.taco.tacos.repository.IngredientJdbcTemplate;
+import ru.taco.tacos.repository.IngredientDataStore;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class IngredientServiceImpl implements IngredientService {
-    private IngredientJdbcTemplate repo;
+//    private IngredientJdbcTemplate repo;
+    private IngredientDataStore repo;
 
     @Override
-    public Iterable<Ingredient> findAll() {
+    public List<Ingredient> findAll() {
         return repo.findAll();
     }
 

@@ -12,6 +12,11 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<span th:if="${#authentication != null}" th:text="|Hello ${#authentication.name}|">Username</span>
+
+<div th:if="${user != null}" th:text="'Привет, ' + ${user.username}"></div>
+<form method="POST" th:action="@{/logout}"> <input type="submit" value="Logout"/>
+</form>
 <nav>
     <div class="top_header">
         <div class="container">

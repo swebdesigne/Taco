@@ -3,6 +3,7 @@ package ru.taco.tacos.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.taco.tacos.model.Ingredient;
 import ru.taco.tacos.model.Taco;
 import ru.taco.tacos.model.TacoOrder;
+import ru.taco.tacos.model.User;
 import ru.taco.tacos.service.IngredientServiceImpl;
 
 import java.util.ArrayList;
@@ -46,7 +48,8 @@ public class DesignTacoController {
     }
 
     @GetMapping
-    public String showDesignForm(Taco taco) {
+    public String showDesignForm(Taco taco, @AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("user", user);
         return "design";
     }
 
